@@ -506,6 +506,12 @@
       description: |
         The kind of the navigational element. "oben" for the header and "unten"
         for the footer.
+    - id: reviewed
+      names: ["überprüft"]
+      priority: optional
+      predicate: block_or_inline
+      description: |
+        List of reviewers. (only in footer)
 
 - id: Smiley
   names: ["Smiley"]
