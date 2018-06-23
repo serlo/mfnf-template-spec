@@ -4,7 +4,6 @@ use std::io;
 use mediawiki_parser::*;
 use mwparser_utils::*;
 
-#[cfg(debug_assertions)]
 const _SPEC: &str = include_str!("templates.yml");
 
 #[derive(TemplateSpec)]
