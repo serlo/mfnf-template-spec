@@ -1,7 +1,6 @@
 //! The template specification for "Mathe-für-Nicht-Freaks".
 
-use std::io;
-use mediawiki_parser::*;
+use mediawiki_parser::{Text, MarkupType};
 use mwparser_utils::*;
 
 const _SPEC: &str = include_str!("templates.yml");
