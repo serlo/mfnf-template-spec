@@ -153,6 +153,12 @@
       predicate: block_or_inline
       description: An explanation for the mathematical theorem.
 
+    - id: example
+      names: ["beispiel"]
+      priority: optional
+      predicate: block_or_inline
+      description: An example for an application of the theorem.
+
     - id: solutionprocess
       names: ["lösungsweg"]
       priority: optional
