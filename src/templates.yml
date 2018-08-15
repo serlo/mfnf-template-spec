@@ -270,73 +270,73 @@
 
     - id: subtask1
       names: ["teilaufgabe1"]
-      priority: required
+      priority: optional
       predicate: block_or_inline
       description: Subtask number 1.
 
     - id: subtask2
       names: ["teilaufgabe2"]
-      priority: required
+      priority: optional
       predicate: block_or_inline
       description: Subtask number 2.
 
     - id: subtask3
       names: ["teilaufgabe3"]
-      priority: required
+      priority: optional
       predicate: block_or_inline
       description: Subtask number 3.
 
     - id: subtask4
       names: ["teilaufgabe4"]
-      priority: required
+      priority: optional
       predicate: block_or_inline
       description: Subtask number 4.
 
     - id: subtask5
       names: ["teilaufgabe5"]
-      priority: required
+      priority: optional
       predicate: block_or_inline
       description: Subtask number 5.
 
     - id: subtask6
       names: ["teilaufgabe6"]
-      priority: required
+      priority: optional
       predicate: block_or_inline
       description: Subtask number 6.
 
     - id: subtask1_solution
-      names: ["teilaufgabe1-solution"]
-      priority: required
+      names: ["teilaufgabe1-lösung", "teilaufgabe1-solution"]
+      priority: optional
       predicate: block_or_inline
       description: Solution for subtask number 1.
 
     - id: subtask2_solution
-      names: ["teilaufgabe2-solution"]
-      priority: required
+      names: ["teilaufgabe2-lösung", "teilaufgabe2-solution"]
+      priority: optional
       predicate: block_or_inline
       description: Solution for subtask number 2.
 
     - id: subtask3_solution
-      names: ["teilaufgabe3-solution"]
-      priority: required
+      names: ["teilaufgabe3-lösung", "teilaufgabe3-solution"]
+      priority: optional
       predicate: block_or_inline
       description: Solution for subtask number 3.
 
     - id: subtask4_solution
-      names: ["teilaufgabe4-solution"]
-      priority: required
+      names: ["teilaufgabe4-lösung", "teilaufgabe4-solution"]
+      priority: optional
       predicate: block_or_inline
       description: Solution for subtask number 4.
 
     - id: subtask5_solution
-      names: ["teilaufgabe5-solution"]
-      priority: required
+      names: ["teilaufgabe5-lösung", "teilaufgabe5-solution"]
+      priority: optional
       predicate: block_or_inline
       description: Solution for subtask number 5.
 
     - id: subtask6_solution
-      names: ["teilaufgabe6-solution"]
-      priority: required
+      names: ["teilaufgabe6-lösung", "teilaufgabe6-solution"]
+      priority: optional
       predicate: block_or_inline
       description: Solution for subtask number 6.
 
