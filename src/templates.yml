@@ -280,55 +280,55 @@
       predicate: block_or_inline
       description: Subtask number 3.
 
-    - id: subtask1
+    - id: subtask4
       names: ["teilaufgabe4"]
       priority: required
       predicate: block_or_inline
       description: Subtask number 4.
 
-    - id: subtask1
+    - id: subtask5
       names: ["teilaufgabe5"]
       priority: required
       predicate: block_or_inline
       description: Subtask number 5.
 
-    - id: subtask1
+    - id: subtask6
       names: ["teilaufgabe6"]
       priority: required
       predicate: block_or_inline
       description: Subtask number 6.
 
-    - id: subtask1-solution
+    - id: subtask1_solution
       names: ["teilaufgabe1-solution"]
       priority: required
       predicate: block_or_inline
       description: Solution for subtask number 1.
 
-    - id: subtask2-solution
+    - id: subtask2_solution
       names: ["teilaufgabe2-solution"]
       priority: required
       predicate: block_or_inline
       description: Solution for subtask number 2.
 
-    - id: subtask3-solution
+    - id: subtask3_solution
       names: ["teilaufgabe3-solution"]
       priority: required
       predicate: block_or_inline
       description: Solution for subtask number 3.
 
-    - id: subtask4-solution
+    - id: subtask4_solution
       names: ["teilaufgabe4-solution"]
       priority: required
       predicate: block_or_inline
       description: Solution for subtask number 4.
 
-    - id: subtask5-solution
+    - id: subtask5_solution
       names: ["teilaufgabe5-solution"]
       priority: required
       predicate: block_or_inline
       description: Solution for subtask number 5.
 
-    - id: subtask6-solution
+    - id: subtask6_solution
       names: ["teilaufgabe6-solution"]
       priority: required
       predicate: block_or_inline
