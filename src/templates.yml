@@ -262,6 +262,12 @@
       predicate: block_or_inline
       description: The content for this exercise.
 
+    - id: explanation
+      names: ["erklärung"]
+      priority: optional
+      predicate: block_or_inline
+      description: An explanation for the exercise.
+
     - id: subtask1
       names: ["teilaufgabe1"]
       priority: required
