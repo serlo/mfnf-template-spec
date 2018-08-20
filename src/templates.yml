@@ -258,7 +258,7 @@
 
     - id: exercise
       names: ["aufgabe"]
-      priority: required
+      priority: optional
       predicate: block_or_inline
       description: The content for this exercise.
 
