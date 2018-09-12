@@ -632,3 +632,45 @@
       predicate: is_plain_text
       description: |
         The smiley size in pixels.
+
+# {{Literatur  | Autor = Wilhelm Merz | Titel = Mathematik für Ingenieure und Naturwissenschaftler | Jahr = 2013 | Verlag = Springer Spektrum | Ort = Berlin | ISBN = 978-3-642-29979-7 | Seiten = 170 }}
+- id: Literature
+  names: ["Literatur", "Literature"]
+  format: inline
+  description: Refers to some information from a work of literature.
+  attributes:
+    - id: author
+      names: ["autor", "author"]
+      priority: optional
+      predicate: is_plain_text
+      description: Full author's names. (Name, Surname, Name, Surname, ...)
+    - id: title
+      names: ["titel", "title"]
+      priority: required
+      predicate: is_plain_text
+      description: Full title.
+    - id: publisher
+      names: ["verlag", "publisher"]
+      priority: optional
+      predicate: is_plain_text
+      description: Name of the publishing company.
+    - id: year
+      names: ["jahr", "year"]
+      priority: optional
+      predicate: is_plain_text
+      description: Year of publication.
+    - id: address
+      names: ["ort", "address"]
+      priority: optional
+      predicate: is_plain_text
+      description: Place or adress of publisher.
+    - id: isbn
+      names: ["isbn"]
+      priority: optional
+      predicate: is_plain_text
+      description: ISBN of the work if applicable.
+    - id: pages
+      names: ["seiten", "pages"]
+      priority: optional
+      predicate: is_plain_text
+      description: Pages cited.     
