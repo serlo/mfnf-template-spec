@@ -183,6 +183,12 @@
       predicate: block_or_inline
       description: The proof for this theorem.
 
+    - id: proof2
+      names: ["beweis2"]
+      priority: optional
+      predicate: block_or_inline
+      description: An alternative proof for this theorem.
+
 - id: Example
   names: [":Mathe für Nicht-Freaks: Vorlage:Beispiel"]
   description: A mathematical example.
