@@ -118,6 +118,12 @@
       predicate: block_or_inline
       description: The answer of the question.
 
+    - id: hint
+      names: ["hinweis"]
+      priority: optional
+      predicate: block_or_inline
+      description: A hint for the question.
+
     - id: kind
       names: ["typ"]
       priority: optional
