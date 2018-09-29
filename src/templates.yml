@@ -10,8 +10,10 @@
 - id: Formula
   names: ["Formel"]
   description: |
-    A math environment for formulas to  distinct them from the surrounding
+    A math environment for formulas to distinct them from the surrounding
     text.
+
+    The content of this template must always be *one and only one* math tag!
   format: inline
   attributes:
     - id: formula
