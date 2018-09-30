@@ -261,7 +261,11 @@
 
 - id: GroupExercise
   names: [":Mathe für Nicht-Freaks: Vorlage:Gruppenaufgabe"]
-  description: An exercise with a set of subexercises.
+  description: |
+      An exercise with a set of subexercises.
+
+      If your exercise has subtasks which can be solved individually,
+      you should use this template. 
   format: box
   attributes:
     - id: title
@@ -280,7 +284,11 @@
       names: ["erklärung"]
       priority: optional
       predicate: block_or_inline
-      description: An explanation for the exercise.
+      description: |
+          An explanation for the exercise.
+
+          This should be general information about the problem which
+          applies for all subtasks.
 
     - id: subtask1
       names: ["teilaufgabe1"]
