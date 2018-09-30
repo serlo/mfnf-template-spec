@@ -6,8 +6,8 @@ extern crate mediawiki_parser;
 #[macro_use]
 extern crate serde_derive;
 
-mod spec;
 pub mod markdown;
+mod spec;
 
 pub use spec::*;
 

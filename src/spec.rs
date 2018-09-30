@@ -1,6 +1,6 @@
 //! The template specification for "Mathe-für-Nicht-Freaks".
 
-use mediawiki_parser::{Text, MarkupType};
+use mediawiki_parser::{MarkupType, Text};
 use mwparser_utils::*;
 
 const _SPEC: &str = include_str!("templates.yml");
@@ -14,21 +14,21 @@ pub fn is_math_tag(elems: &[Element]) -> PredResult {
     if elems.len() != 1 {
         return Err(PredError {
             tree: None,
-            cause: "There is none or more than one element in this math tag!".into()
+            cause: "There is none or more than one element in this math tag!".into(),
         });
     }
     if let Some(&Element::Formatted(ref fmt)) = elems.first() {
         if fmt.markup != MarkupType::Math {
             return Err(PredError {
                 tree: elems.first(),
-                cause: "This is not math-formatted!".into()
-            })
+                cause: "This is not math-formatted!".into(),
+            });
         };
         Ok(())
     } else {
         Err(PredError {
             tree: elems.first(),
-            cause: "This is not math-formatted text!".into()
+            cause: "This is not math-formatted text!".into(),
         })
     }
 }
@@ -38,15 +38,16 @@ pub fn is_plain_text(elems: &[Element]) -> PredResult {
     fn shallow(elements: &[Element]) -> PredResult {
         for elem in elements {
             let allowed = match *elem {
-                Element::Paragraph(_)
-                | Element::Text(_) => true,
-                _ => false
+                Element::Paragraph(_) | Element::Text(_) => true,
+                _ => false,
             };
             if !allowed {
                 return Err(PredError {
                     tree: Some(elem),
-                    cause: format!("{} markup is not allowed in plain text!",
-                                   &elem.get_variant_name()),
+                    cause: format!(
+                        "{} markup is not allowed in plain text!",
+                        &elem.get_variant_name()
+                    ),
                 });
             }
         }
@@ -58,15 +59,14 @@ pub fn is_plain_text(elems: &[Element]) -> PredResult {
 /// The argument is a switch and the conten of the argument can only be "nein"
 /// ("nein" is German for "no").
 pub fn is_negative_switch(elems: &[Element]) -> PredResult {
-    if is_plain_text(elems).is_ok() &&
-       extract_plain_text(elems).trim() == "nein"
-    {
+    if is_plain_text(elems).is_ok() && extract_plain_text(elems).trim() == "nein" {
         return Ok(());
     } else {
         return Err(PredError {
             tree: elems.first(),
             cause: "The content of this argument is only allowed \
-                    to be \"nein\".".into(),
+                    to be \"nein\"."
+                .into(),
         });
     };
 }
@@ -76,16 +76,18 @@ pub fn is_negative_switch(elems: &[Element]) -> PredResult {
 /// {{#invoke:Mathe für Nicht-Freaks: Seite|unten}} are allowed.
 pub fn is_navigation_spec(elems: &[Element]) -> PredResult {
     match elems {
-        [Element::Text(Text { text, .. })] if text == "oben" || text == "unten"
-            => return Ok(()),
-        _ => return Err(PredError {
-            tree: None,
-            cause: "Wrong formatting for the navigation. For the header only \
-                    the variant \
-                    \"{{#invoke:Mathe für Nicht-Freaks/Seite|oben}}\" is \
-                    allowed. The footer only admits the code \
-                    \"{{#invoke:Mathe für Nicht-Freaks/Seite|unten}}\".".into(),
-        }),
+        [Element::Text(Text { text, .. })] if text == "oben" || text == "unten" => return Ok(()),
+        _ => {
+            return Err(PredError {
+                tree: None,
+                cause: "Wrong formatting for the navigation. For the header only \
+                        the variant \
+                        \"{{#invoke:Mathe für Nicht-Freaks/Seite|oben}}\" is \
+                        allowed. The footer only admits the code \
+                        \"{{#invoke:Mathe für Nicht-Freaks/Seite|unten}}\"."
+                    .into(),
+            })
+        }
     };
 }
 
@@ -96,7 +98,7 @@ fn get_template_spec(template: &Template) -> Result<TemplateSpec, PredError> {
     } else {
         Err(PredError {
             tree: None,
-            cause: format!("\"{}\" has no specification!", &name)
+            cause: format!("\"{}\" has no specification!", &name),
         })
     }
 }
@@ -111,11 +113,13 @@ pub fn is_inline_only(elems: &[Element]) -> PredResult {
                     if spec.format != Format::Inline {
                         return Err(PredError {
                             tree: Some(elem),
-                            cause: format!("\"{}\" is not an inline template!",
-                                &extract_plain_text(&template.name))
-                        })
+                            cause: format!(
+                                "\"{}\" is not an inline template!",
+                                &extract_plain_text(&template.name)
+                            ),
+                        });
                     }
-                },
+                }
                 Element::Text(_)
                 | Element::ExternalReference(_)
                 | Element::InternalReference(_)
@@ -124,19 +128,19 @@ pub fn is_inline_only(elems: &[Element]) -> PredResult {
                 | Element::Comment(_)
                 | Element::HtmlTag(_)
                 | Element::TemplateArgument(_)
-                | Element::ListItem(_)
-                => (),
-                _ => return Err(PredError {
-                    tree: Some(elem),
-                    cause: format!("{} is not inline only!", &elem.get_variant_name())
-                }),
+                | Element::ListItem(_) => (),
+                _ => {
+                    return Err(PredError {
+                        tree: Some(elem),
+                        cause: format!("{} is not inline only!", &elem.get_variant_name()),
+                    })
+                }
             }
         }
         Ok(())
     };
     always(elems, &shallow)
 }
-
 
 /// This list only contains block or inline elements.
 pub fn block_or_inline(elems: &[Element]) -> PredResult {
@@ -148,11 +152,13 @@ pub fn block_or_inline(elems: &[Element]) -> PredResult {
                     if spec.format != Format::Inline && spec.format != Format::Block {
                         return Err(PredError {
                             tree: Some(elem),
-                            cause: format!("\"{}\" is not a block or inline template!",
-                                &extract_plain_text(&template.name))
-                        })
+                            cause: format!(
+                                "\"{}\" is not a block or inline template!",
+                                &extract_plain_text(&template.name)
+                            ),
+                        });
                     }
-                },
+                }
                 Element::Text(_)
                 | Element::TemplateArgument(_)
                 | Element::ExternalReference(_)
@@ -167,12 +173,13 @@ pub fn block_or_inline(elems: &[Element]) -> PredResult {
                 | Element::List(_)
                 | Element::ListItem(_)
                 | Element::Gallery(_)
-                | Element::Error(_)
-                => (),
-                _ => return Err(PredError {
-                    tree: Some(elem),
-                    cause: format!("{} is not block/ inline!", &elem.get_variant_name())
-                }),
+                | Element::Error(_) => (),
+                _ => {
+                    return Err(PredError {
+                        tree: Some(elem),
+                        cause: format!("{} is not block/ inline!", &elem.get_variant_name()),
+                    })
+                }
             }
         }
         Ok(())

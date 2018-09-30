@@ -6,10 +6,7 @@ use std::fmt::Write;
 /// Renders a markdown version of a template specification.
 ///
 /// The `heading_depth` is added to the depth of the headings produced.
-pub fn template_description(
-    template: &spec_meta::TemplateSpec,
-    heading_depth: usize
-) -> String {
+pub fn template_description(template: &spec_meta::TemplateSpec, heading_depth: usize) -> String {
     let mut out = format!(
         "{} Documentation for `{}` [{}]\n\n",
         "#".repeat(heading_depth + 1),
@@ -20,10 +17,15 @@ pub fn template_description(
     let names = template.names.join(", ");
     writeln!(&mut out, "Other names: *{}*\n", &names);
     writeln!(&mut out, "{}\n", &template.description);
-    writeln!(&mut out, "{} Template Attributes:\n", "#".repeat(heading_depth + 2));
+    writeln!(
+        &mut out,
+        "{} Template Attributes:\n",
+        "#".repeat(heading_depth + 2)
+    );
 
     for attribute in &template.attributes {
-        let mut alt_names = &attribute.names
+        let mut alt_names = &attribute
+            .names
             .iter()
             .filter(|n| n != &attribute.default_name())
             .map(|n| n.to_string())
@@ -42,18 +44,17 @@ pub fn template_description(
             &format!("{:?}", &attribute.priority).to_lowercase(),
             &attribute.predicate_name,
         );
-        let description = attribute.description
+        let description = attribute
+            .description
             .split("\n")
             .map(|s| {
                 let mut new = " ".repeat(4);
                 new.push_str(s);
                 new
-            })
-            .collect::<Vec<String>>()
+            }).collect::<Vec<String>>()
             .join("\n");
 
         writeln!(&mut out, "{}\n", &description);
     }
     out
 }
-
