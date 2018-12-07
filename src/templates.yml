@@ -146,7 +146,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: Name of the mathematcial theorem.
 
     - id: theorem
@@ -199,7 +199,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: A name for this example.
 
     - id: example
@@ -216,7 +216,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: A name for this excersise.
 
     - id: exercise
@@ -271,7 +271,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: A name for this group of excersise.
 
     - id: exercise
@@ -392,7 +392,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: The name of the theorem which will be proved.
 
     - id: proof
@@ -410,7 +410,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: |
         The title of the theorem or exercise which is going to be proved.
 
@@ -428,7 +428,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: The name of the proof which is going to be proved.
 
     - id: proof
@@ -445,7 +445,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: The name of the theorem which is proved.
 
     - id: summary
@@ -462,7 +462,7 @@
     - id: title
       names: ["titel"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: The title of the exercise this solution has.
 
     - id: solution
@@ -479,7 +479,7 @@
     - id: name
       names: ["name"]
       priority: optional
-      predicate: is_plain_text
+      predicate: is_inline_only
       description: The name of the proof step.
 
     - id: goal
