@@ -2,6 +2,7 @@
 name = "mfnf_template_spec"
 version = "0.1.0"
 authors = ["Valentin Roland <valentin@vroland.de>"]
+edition = "2018"
 
 [dependencies]
 mwparser_utils = { git = "https://github.com/vroland/mediawiki-parser-utils" }

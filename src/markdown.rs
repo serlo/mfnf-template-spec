@@ -1,12 +1,15 @@
 //! CommonMark rendering of the template specification.
 
-use spec_meta;
-use std::fmt::Write;
+use crate::spec_meta;
+use std::fmt::{Error, Write};
 
 /// Renders a markdown version of a template specification.
 ///
 /// The `heading_depth` is added to the depth of the headings produced.
-pub fn template_description(template: &spec_meta::TemplateSpec, heading_depth: usize) -> String {
+pub fn template_description(
+    template: &spec_meta::TemplateSpec,
+    heading_depth: usize,
+) -> Result<String, Error> {
     let mut out = format!(
         "{} Documentation for `{}` [{}]\n\n",
         "#".repeat(heading_depth + 1),
@@ -15,16 +18,16 @@ pub fn template_description(template: &spec_meta::TemplateSpec, heading_depth: u
     );
 
     let names = template.names.join(", ");
-    writeln!(&mut out, "Other names: *{}*\n", &names);
-    writeln!(&mut out, "{}\n", &template.description);
+    writeln!(&mut out, "Other names: *{}*\n", &names)?;
+    writeln!(&mut out, "{}\n", &template.description)?;
     writeln!(
         &mut out,
         "{} Template Attributes:\n",
         "#".repeat(heading_depth + 2)
-    );
+    )?;
 
     for attribute in &template.attributes {
-        let mut alt_names = &attribute
+        let alt_names = &attribute
             .names
             .iter()
             .filter(|n| n != &attribute.default_name())
@@ -32,9 +35,9 @@ pub fn template_description(template: &spec_meta::TemplateSpec, heading_depth: u
             .collect::<Vec<String>>()
             .join(", ");
 
-        writeln!(
+        write!(
             &mut out,
-            "  - `{}` {}[**{}**][**{}**]: \n",
+            "  - `{}` {}[**{}**][**{}**]: ",
             attribute.default_name(),
             if alt_names.is_empty() {
                 String::new()
@@ -43,7 +46,7 @@ pub fn template_description(template: &spec_meta::TemplateSpec, heading_depth: u
             },
             &format!("{:?}", &attribute.priority).to_lowercase(),
             &attribute.predicate_name,
-        );
+        )?;
         let description = attribute
             .description
             .split("\n")
@@ -51,10 +54,11 @@ pub fn template_description(template: &spec_meta::TemplateSpec, heading_depth: u
                 let mut new = " ".repeat(4);
                 new.push_str(s);
                 new
-            }).collect::<Vec<String>>()
+            })
+            .collect::<Vec<String>>()
             .join("\n");
 
-        writeln!(&mut out, "{}\n", &description);
+        writeln!(&mut out, "{}\n", &description)?;
     }
-    out
+    Ok(out)
 }

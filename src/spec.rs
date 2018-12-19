@@ -2,12 +2,11 @@
 
 use mediawiki_parser::{MarkupType, Text};
 use mwparser_utils::*;
+use mwparser_utils_derive::template_spec;
 
 const _SPEC: &str = include_str!("templates.yml");
 
-#[derive(TemplateSpec)]
-#[spec = "templates.yml"]
-struct _DummySpec;
+template_spec!("src/templates.yml");
 
 /// A list of elements only contains one math-tag.
 pub fn is_math_tag(elems: &[Element]) -> PredResult {
